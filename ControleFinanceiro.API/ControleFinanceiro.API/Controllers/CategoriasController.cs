@@ -23,14 +23,14 @@ namespace ControleFinanceiro.API.Controllers
             _categoriaRepositorio = categoriaRepositorio;
         }
 
-        [Authorize (Roles = "Administrador")]
+       // [Authorize (Roles = "Administrador")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Categoria>>> GetCategorias()
         {            
             return await _categoriaRepositorio.PegarTodos().ToListAsync();
         }
 
-        [Authorize(Roles = "Administrador")]
+       // [Authorize(Roles = "Administrador")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Categoria>> GetCategoria(int id)
         {
@@ -44,7 +44,7 @@ namespace ControleFinanceiro.API.Controllers
             return categoria;
         }
 
-        [Authorize(Roles = "Administrador")]
+       // [Authorize(Roles = "Administrador")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCategoria(int id, Categoria categoria)
         {
@@ -66,7 +66,7 @@ namespace ControleFinanceiro.API.Controllers
             return BadRequest(ModelState);
         }
 
-        [Authorize(Roles = "Administrador")]
+       // [Authorize(Roles = "Administrador")]
         [HttpPost]
         public async Task<ActionResult<Categoria>> PostCategoria(Categoria categoria)
         {
@@ -83,7 +83,7 @@ namespace ControleFinanceiro.API.Controllers
             return BadRequest(categoria);
         }
 
-        [Authorize(Roles = "Administrador")]
+       // [Authorize(Roles = "Administrador")]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Categoria>> DeleteCategoria(int id)
         {
@@ -101,21 +101,21 @@ namespace ControleFinanceiro.API.Controllers
             });
         }
 
-        [Authorize(Roles = "Administrador")]
+       // [Authorize(Roles = "Administrador")]
         [HttpGet("FiltrarCategorias/{nomeCategoria}")]
         public async Task<ActionResult<IEnumerable<Categoria>>> FiltrarCategorias(string nomecategoria)
         {
             return await _categoriaRepositorio.FiltrarCategorias(nomecategoria).ToListAsync();
         }
 
-        [Authorize]
+       // [Authorize]
         [HttpGet("FiltrarCategoriasDespesas")]
         public async Task<ActionResult<IEnumerable<Categoria>>> FiltrarCategoriasDespesas()
         {
             return await _categoriaRepositorio.PegarCategoriasPeloTipo("Despesa").ToListAsync();
         }
 
-        [Authorize]
+       // [Authorize]
         [HttpGet("FiltrarCategoriasGanhos")]
         public async Task<ActionResult<IEnumerable<Categoria>>> FiltrarCategoriasGanhos()
         {
